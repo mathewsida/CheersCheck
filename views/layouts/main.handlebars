@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <!-- -- Header -- -->
+    {{!-- Header --}}
     <div class="flex-column justify-space-around">
         <header class="display-flex justify-space-between align-center p-2">
             <h1>
@@ -22,16 +22,15 @@
             <!-- Navbar -->
             <nav class="navbar">
                 <!-- Conditionally render login or logout links -->
-                <!-- {{#if logged_in}} -->
+                {{#if logged_in}}
                 <a class="nav-link" href="/">Home</a>
                 <a class="nav-link" href="/dashboard">Dashboard</a>
                 <a class="nav-link" href="/api/users/logout" id="logout">Logout</a>
-                <a class="nav-link" href="/api/users/logout" id="logout">Contact</a>
-                <!-- {{else}} -->
-                <!-- <a class="nav-link" href="/">Home</a>
+                {{else}}
+                <a class="nav-link" href="/">Home</a>
                 <a class="nav-link" href="/dashboard">Dashboard</a>
-                <a class="nav-link" href="/login">Login</a> -->
-                <!-- {{/if}} -->
+                <a class="nav-link" href="/login">Login</a>
+                {{/if}}
             </nav>
 
             <!-- Hero -->
@@ -40,20 +39,20 @@
 
             <!-- Main -->
             <main class="p-3">
-                <!-- {{{ body }}} -->
+                {{{ body }}}
             </main>
 
             <!-- Footer -->
             <footer>
-                <!-- {{>footer}} -->
+                {{footer}}
             </footer>
 
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
                 crossorigin="anonymous"></script>
-            <!-- {{#if loggedIn}} -->
+            {{#if loggedIn}}
             <script src="/js/logout.js"></script>
-            <!-- {{/if}} -->
+            {{/if}}
             <script src="/js/script.js"></script>
 </body>
 
