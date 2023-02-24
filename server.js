@@ -1,19 +1,49 @@
+const path = require('path');
+require('dotenv').config();
+
 const express = require('express');
 const routes = require('./controllers');
-const Sequelize = require('./config/connection');
-const path = require('path');
+const sequelize = require('./config/connection');
+const session = require('express-session');
+const exphbs = require('express-handlebars');
 
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const helpers = require('./utils/helpers');
 
-const exphbs = require('express-handlebars');
-const session = require('express-session');
+// handlebars js engine instance with custom helpers
+const hbs = exphbs.create({ helpers });
 
+const sess = {
+  // secret: '',     (need to add secret)
+  cookie: {
+    // Session will automatically expire in 10 minutes
+    expires: 100 * 60 * 1000
+  },
+  // false is typically recommended
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db:sequelize
+  })
+};
+
+// sets up express app
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+// sets Handlebars as the default template engine
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
-// const sess =
-
+// middleware for session object
 app.use(session(sess));
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(routes);
+
+// connection to db and server
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
+});
