@@ -8,14 +8,14 @@ const withAuth = require('../utils/auth');
 router.get('/', (req, res) => {
   Liquor.findAll({
     where: {
-      user_id: req.session,user_id
+      user_id: req.session, user_id
     },
     attributes: [
-      // Getting ID, Title, and timestamp from Liquor table
+      // Getting ID, Name, description and date created from Liquor table
       'id',
-      'title',
-      'created_at',
-      'liquor_text',
+      'name',
+      'description',
+      'date_created',
     ],
     include: [
       {
@@ -26,10 +26,9 @@ router.get('/', (req, res) => {
         model: Comment,
         attributes: [
           'id',
-          'comment_text',
-          'created_at',
-          'liquor_id',
-          'user_id',
+          'name',
+          'description',
+          'date_created',
         ],
       }
     ]
