@@ -11,11 +11,12 @@ router.get('/', (req, res) => {
       user_id: req.session, user_id
     },
     attributes: [
-      // Getting ID, Name, description and date created from Liquor table
+      // Getting ID, Name, description, date created and liquor ID from Liquor table
       'id',
       'name',
       'description',
       'date_created',
+      'liquor_id',
     ],
     include: [
       {
@@ -29,6 +30,7 @@ router.get('/', (req, res) => {
           'name',
           'description',
           'date_created',
+          'liquor_id',
         ],
       }
     ]
