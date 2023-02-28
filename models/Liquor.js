@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Tequila extends Model {}
+class Liquor extends Model {}
 
-Tequila.init(
+Liquor.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -15,8 +15,16 @@ Tequila.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        liquor_type: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        volume_size: {
+            type: DataTypes.DECIMAL,
+        },
         description: {
             type: DataTypes.STRING,
+            allowNull: false,
         },
         date_created: {
             type: Datatypes.DATE,
@@ -36,8 +44,8 @@ Tequila.init(
         timestamp: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'tequila',
+        modelName: 'liquor',
     }
 );
 
-module.exports = Tequila;
+module.exports = Liquor;
