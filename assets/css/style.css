@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+:root {
+    --dark: rgb(44, 54, 57);
+    --teal: rgb(63, 78, 79);
+    --tan: rgb(162, 123, 92);
+    --light: rgb(220, 215, 201);
+}
+main {
+    background-color: var(--light);
+}
