@@ -1,0 +1,54 @@
+{{!-- iterates through an array of comments (with the Comment identifier), and displays each comment --}}
+<div id="container card-container">
+    {{#each Comment}}
+    <div class="card comment">
+        <div class="card-body">
+            <p>Comment:</p>
+            <p class="card-text">{{body}}</p>
+        </div>
+    </div>
+    {{/each}}
+    </section>
+
+    {{!-- allows users to submit new comments. --}}
+
+    <div class="card text-center">
+        <div class="card-body">
+            <h3 class="card-title">Add Comment</h3>
+            <form id="newComment">
+                <div class="card-text"></div>
+                {{!-- <input id="hiddenCommentId" hidden="true" value="{{id}}"></input> --}}
+                <textarea id="hiddenCommentId" hidden="true">{{id}}</textarea>
+                <textarea class=" form-input" id="comment" type="text"
+                    placeholder="Type your comment here..."></textarea>
+                <button class="btn submitBtn" type="submit" data-id="{{id}}" id="newCommentButton">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    {{!-- Update comment --}}
+    <div class="card comment">
+        {{#each comments}}
+        <div class="card-header">
+            <p>{{title}}</p>
+            <p class="card-text">{{body}}</p>
+            <form class="updateCommentForm">
+                {{!-- <input type="hidden" name="comment_id" value="{{id}}"> --}}
+                <textarea type="hidden" name="comment_id">{{id}}</textarea>
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    {{!-- <input type="text" class="form-control" name="title" value="{{title}}"> --}}
+                    <textarea type="text" class="form-control" name="title">{{title}}</textarea>
+                </div>
+                <div class="form-group card-body">
+                    <label for="body">Content:</label>
+                    <textarea class="form-control comment-content"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+<script src="/js/comment.js"></script>

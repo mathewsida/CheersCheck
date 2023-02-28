@@ -1,6 +1,23 @@
-<div class="row align-center mb-5 ">
-    <div class="col-md-6">
-    </div>
-    <div class="col-md-6">
+<!-- Loop over each object in the posts array -->
+{{#if posts}}
+<h2 id="home-title">Posts</h2>
+<div class="home-card card">
+    <div class="card-body">
+        {{#each posts}}
+        <div class="card-header">
+            <a id="home-post-info" class="card-title" href="/posts/{{id}}">{{title}} - {{format_date
+                date_created}}</a>
+        </div>
+        </br>
+        <p id="home-post-content" class="card-text">{{content}}</p>
+        </br>
+        <p class="card-subtitle mb-2 text-muted home-user">Posted by {{user.username}} on {{format_date date_created}}
+        </p>
+        </br>
+        {{/each}}
     </div>
 </div>
+</br>
+{{else}}
+<p>No posts have been created yet.</p>
+{{/if}}
