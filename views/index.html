@@ -15,8 +15,8 @@
     <!-- -- Header -- -->
     <div class="flex-column justify-space-around">
         <header class="display-flex justify-space-between align-center p-2">
-            <h1>
-                <a href="/">CheersCheck</a>
+            <h1 class="jumbotron text-center">
+                <a href="/" id="jumbo-header">CheersCheck</a>
             </h1>
             <br>
             <!-- Navbar -->
@@ -34,13 +34,43 @@
                 <!-- {{/if}} -->
             </nav>
 
-            <!-- Hero -->
-            <div class="hero">
-            </div>
-
             <!-- Main -->
             <main class="p-3">
+
                 <!-- {{{ body }}} -->
+
+                <!-- HOMEPAGE -->
+                                <!-- {{#if logged_in}} -->
+
+                                <!-- {{else}} -->
+
+                                <!-- {{/if}} -->
+
+
+                                
+                <!-- {{#if posts}} -->
+                <h2 id="home-title">Posts</h2>
+                <div class="home-card card">
+                    <div class="card-body">
+                        <!-- {{#each posts}} -->
+                        <div class="card-header">
+                            <a id="home-post-info" class="card-title" href="/posts/{{id}}">{{title}} - {{format_date
+                                date_created}}</a>
+                        </div>
+                        </br>
+                        <p id="home-post-content" class="card-text">{{content}}</p>
+                        </br>
+                        <p class="card-subtitle mb-2 text-muted home-user">Posted by {{user.username}} on {{format_date
+                            date_created}}
+                        </p>
+                        </br>
+                        <!-- {{/each}} -->
+                    </div>
+                </div>
+                </br>
+                <!-- {{else}} -->
+                <p>No posts have been created yet.</p>
+                <!-- {{/if}} -->
             </main>
 
             <!-- Footer -->
