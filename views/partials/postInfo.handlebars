@@ -1,0 +1,9 @@
+{{#each post}}
+<div class="card">
+    <div class="card-header">
+        <h4><a class="link" href="/posts/{{this.id}}">{{this.title}}</a></h4>
+        <p>Posted by {{this.user.username}} on {{format_date this.date_created}}</p>
+    </div>
+    <p class="card-body">{{this.content}}</p>
+</div>
+{{/each}}
