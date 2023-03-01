@@ -7,7 +7,22 @@ User.hasMany(Liquor, {
     onDelete: 'CASCADE',
 });
 
+User.hasMany(Comment, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE',
+});
+
 Liquor.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE',
+});
+
+Liquor.hasMany(Comment, {
+    foreignKey: 'liquor_id',
+    onDelete: 'Cascade',
+});
+
+Comment.belongsTo(User, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE',
 });
@@ -16,11 +31,6 @@ Comment.belongsTo(Liquor, {
     foreignKey: 'liquor_id',
     onDelete: 'CASCADE',
 });
-
-User.hasMany(Comment, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE',
-  });
 
 module.exports = {
     User,
