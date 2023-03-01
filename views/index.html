@@ -17,140 +17,164 @@
 <body>
     <!-- -- Header -- -->
     <div class="flex-column justify-space-around ">
-        <header class="display-flex justify-space-between align-center p-2">
-            <h1 class="jumbotron text-center">
-                <a href="/" id="jumbo-header">CheersCheck</a>
-            </h1>
-            <br>
-            <!-- Navbar -->
-            <nav class="navbar  bg-dark">
-                <!-- Conditionally render login or logout links -->
-                <!-- {{#if logged_in}} -->
-                <a class="nav-link" href="/">Home</a>
-                <a class="nav-link" href="/dashboard">Dashboard</a>
-                <a class="nav-link" href="/api/users/logout" id="logout">Logout</a>
-                <a class="nav-link" href="/api/users/logout" id="logout">Contact</a>
-                <!-- {{else}} -->
-                <!-- <a class="nav-link" href="/">Home</a>
-                <a class="nav-link" href="/dashboard">Dashboard</a>
-                <a class="nav-link" href="/login">Login</a> -->
-                <!-- {{/if}} -->
-            </nav>
-
-            <!-- Main -->
-            <main class="p-3">
-
-                <body>
-
-                    <!-- {{{ body }}} -->
-
-                    <!-- HOMEPAGE -->
+        <!-- <header class="display-flex justify-space-between align-center p-2"> -->
+        <!-- <h1 class="jumbotron text-center"> -->
+        <img src="/assets/images/headerImage.png" id="jumbo-header" />
+        <!-- <img src="/assets/images/headerimage.jpg" id="jumbo-header" /> -->
+        </h1>
+        <br>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-sm" id="nav-background">
+            <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+                <div class="collapse navbar-collapse text-center">
+                    <ul class="navbar-nav"></ul>
+                    <!-- Conditionally render login or logout links -->
                     <!-- {{#if logged_in}} -->
-                    <h2 class="subtitle mb-2 text-muted home-user">THIS IS THE HOMEPAGE THAT REQUIRES YOU TO LOG IN</h2>
-                    <p>------------------------------------------------------</p>
-                    </br>
-                    <h3>What Is Cheers Check?</h3>
-                    <h4>An application that allows liquor connaisseurs to keep track of their alcohol inventory. Connect
-                        with friends and visit their liquor cabinets. Give a "Cheers" to your faves!</h4>
-                    <div class="postContainer container-fluid mt-5">
-                        <div class="card">
-                            <div id="card-body">
-                                <h3 class="card-header login-header">Login</h3>
+                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                    <a class="nav-link" href="/api/users/logout" id="logout">Contact</a>
+                    <button class="btn nav-link" id="logout">Logout</button>
+                    <!-- {{else}} -->
+                    <!-- <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link" href="/dashboard">Dashboard</a>
+                        <a class="nav-link" href="/login">Login</a> -->
+                    <!-- {{/if}} -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        </header>
+
+        <!-- Main -->
+        <main class="p-3">
+
+            <body>
+
+                <!-- {{{ body }}} -->
+
+                <!-- HOMEPAGE -->
+                <!-- {{#if logged_in}} -->
+                <h2 class="subtitle mb-2 text-muted home-user">THIS IS THE HOMEPAGE THAT REQUIRES YOU TO LOG IN</h2>
+                <p>------------------------------------------------------</p>
+                </br>
+                <h3 class="home-title">What Is Cheers Check?</h3>
+                <h4 class="home-description">An application that allows liquor connaisseurs to keep track of their
+                    alcohol inventory. Connect
+                    with friends and visit their liquor cabinets. Give a "Cheers" to your faves!</h4>
+                <p>------------------------------------------------------</p>
+
+                <div class="postContainer container-fluid mt-5">
+                    <div class="card">
+                        <div id="card-body">
+                            <h3 class="card-header login-header">Login</h3>
+                            </br>
+                            <form id="login" class="form login-form">
+                                <div class="form-group">
+                                    <label for="name-login" class="name-login">Username:</label>
+                                    <input class="form-input" type="text" id="name-login" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="password-login" class="password-login">Password:</label>
+                                    <input class="form-input" type="password" id="password-login" />
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary login-button" type="submit">Login</button>
+                                </div>
                                 </br>
-                                <form id="login" class="form login-form">
-                                    <div class="form-group">
-                                        <label for="name-login" class="name-login">Username:</label>
-                                        <input class="form-input" type="text" id="name-login" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password-login" class="password-login">Password:</label>
-                                        <input class="form-input" type="password" id="password-login" />
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-primary login-button" type="submit">Login</button>
-                                    </div>
-                                    </br>
-                                    <h3 class="form-group">Dont have an account? <a href="/signup">Sign up here!</a>
-                                    </h3>
-                                </form>
-                            </div>
+                                <h3 class="form-group signup-text">Dont have an account? <a href="/signup"
+                                        class="signup-link">Sign
+                                        up here!</a>
+                                </h3>
+                            </form>
                         </div>
                     </div>
-                    </br>
-                    <!-- {{else}} -->
-                    <p>------------------------------------------------------</p>
-                    <h2 class="subtitle mb-2 text-muted home-user">THIS IS THE HOMEPAGE AFTER YOU LOG IN</h2>
-                    <p>------------------------------------------------------</p>
-                    </br>
-                    </br>
-                    <h1 id="home-greeting"> Cheers, {{user.username}}!</h1>
+                </div>
+
+
+                <!-- {{else}} -->
+                <p>------------------------------------------------------</p>
+                <h2 class="subtitle mb-2 text-muted home-user">THIS IS THE HOMEPAGE AFTER YOU LOG IN</h2>
+                <p>------------------------------------------------------</p>
+                </br>
+                </br>
+                <h1 id="home-greeting"> Cheers, {{user.username}}!</h1>
+
+                <div id="container new-post-container">
+                    <div class="card new-post-container">
+                        <h3 class="card-header">Add to Inventory</h3>
+                        <form class="card-body new-post-form" id="new-post-form">
+                            <label for="title" class="form-label title-text-add">Alcohol Type</label>
+                            </br>
+                            <textarea type="text" id="postTitle" name="postTitle" class="form-input"></textarea>
+                            </br>
+                            <label class="form-label" for="content">Name</label>
+                            </br>
+                            <textarea id="content" class="newPostContent" name="content"
+                                placeholder="content"></textarea>
+                            </br>
+                            <button type="submit" class="btn" id="add-post-button">Create</button>
+                    </div>
+                    </form>
                     <p>Go to your <a href="/users/inventory">Liquor Cabinet</a> </p>
-                    <div id="container new-post-container">
-                        <div class="card new-post-container">
-                            <h3 class="card-header">Add to Inventory</h3>
-                            <form class="card-body new-post-form" id="new-post-form">
-                                <label for="title" class="form-label title-text-add">Alcohol Type</label>
-                                </br>
-                                <textarea type="text" id="postTitle" name="postTitle" class="form-input"></textarea>
-                                </br>
-                                <label class="form-label" for="content">Name</label>
-                                </br>
-                                <textarea id="content" class="newPostContent" name="content"
-                                    placeholder="content"></textarea>
-                                </br>
-                                <button type="submit" class="btn" id="add-post-button">Create</button>
+                </div>
+                </br>
+                </br>
+                <p>------------------------------------------------------</p>
+                <h2 class="subtitle mb-2 text-muted home-user">THIS IS WHERE CHEER COUNTER WILL GO?</h2>
+                <p>------------------------------------------------------</p>
+                <h3 class="">Check Your Cheers</h3>
+                <img src="/assets/images/cheers.gif" class="cheers-gif" />
+                <p id="total-cheers">Cheers Check: (cheers total #)<img src="/assets/images/cheersIcon.png"
+                        class="cheers-icon" />
+                </p>
+                <p>Cheers Your Friends!</p>
+                <button class=" button cheers-btn">Cheers!</button>
+                </br>
+                </br>
+                <p>------------------------------------------------------</p>
+                <h2 class="subtitle mb-2 text-muted home-user">THIS IS WHERE COMMENTS WILL GO?</h2>
+                <p>------------------------------------------------------</p>
+                <!-- {{/if}} -->
+                <!-- {{#if posts}} -->
+                <h2 id="home-title">Comments</h2>
+                <div class="home-card card">
+                    <div class="card-body">
+                        <!-- {{#each posts}} -->
+                        <div class="card-header">
+                            <a id="home-post-info" class="card-title" href="/posts/{{id}}">{{title}} - {{format_date
+                                date_created}}</a>
                         </div>
-                        </form>
+                        </br>
+                        </br>
+                        <p id="home-post-content" class="card-text">{{content}}</p>
+                        </br>
+                        <p class="card-subtitle mb-2 text-muted home-user">Posted by {{user.username}} on
+                            {{format_date
+                            date_created}}
+                        </p>
+                        </br>
+                        <!-- {{/each}} -->
                     </div>
-                    </br>
-                    </br>
-                    <h2 class="subtitle mb-2 text-muted home-user">THIS IS CHEER COUNTER WILL GO?</h2>
-                    <p>------------------------------------------------------</p>
-                    </br>
-                    <h2 class="subtitle mb-2 text-muted home-user">THIS IS WHERE COMMENTS WILL GO?</h2>
-                    <p>------------------------------------------------------</p>
-                    </br>
-                    <!-- {{/if}} -->
-                    <!-- {{#if posts}} -->
-                    <h2 id="home-title">Comments</h2>
-                    <div class="home-card card">
-                        <div class="card-body">
-                            <!-- {{#each posts}} -->
-                            <div class="card-header">
-                                <a id="home-post-info" class="card-title" href="/posts/{{id}}">{{title}} - {{format_date
-                                    date_created}}</a>
-                            </div>
-                            </br>
-                            </br>
-                            <p id="home-post-content" class="card-text">{{content}}</p>
-                            </br>
-                            <p class="card-subtitle mb-2 text-muted home-user">Posted by {{user.username}} on
-                                {{format_date
-                                date_created}}
-                            </p>
-                            </br>
-                            <!-- {{/each}} -->
-                        </div>
-                    </div>
-                    </br>
-                    <!-- {{else}} -->
-                    <p>No comments have been created yet.</p>
-                    <!-- {{/if}} -->
+                </div>
+                </br>
+                <!-- {{else}} -->
+                <p>No comments have been created yet.</p>
+                <!-- {{/if}} -->
 
-                    <!-- Footer -->
-                    <footer>
-                        <!-- {{>footer}} -->
-                    </footer>
+                <!-- Footer -->
+                <footer>
+                    <!-- {{>footer}} -->
+                </footer>
 
-                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-                        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-                        crossorigin="anonymous"></script>
-                    <!-- {{#if loggedIn}} -->
-                    <!-- <script src="/js/logout.js"></script> -->
-                    <!-- {{/if}} -->
-                    <!-- <script src="/js/script.js"></script> -->
-                </body>
-            </main>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                    crossorigin="anonymous"></script>
+                <!-- {{#if loggedIn}} -->
+                <!-- <script src="/js/logout.js"></script> -->
+                <!-- {{/if}} -->
+                <!-- <script src="/js/script.js"></script> -->
+            </body>
+        </main>
 
 
 </html>
