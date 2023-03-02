@@ -19,7 +19,7 @@ Liquor.belongsTo(User, {
 
 Liquor.hasMany(Comment, {
     foreignKey: 'liquor_id',
-    onDelete: 'Cascade',
+    onDelete: 'CASCADE',
 });
 
 Comment.belongsTo(User, {
@@ -36,4 +36,4 @@ module.exports = {
     User,
     Liquor,
     Comment,
-  };
+};
