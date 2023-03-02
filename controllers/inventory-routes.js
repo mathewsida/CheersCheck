@@ -29,8 +29,9 @@ router.get('/', (req, res) => {
           'id',
           'name',
           'description',
+          'liquor_type',
+          'volume_size',
           'date_created',
-          'liquor_id',
         ],
       }
     ]
