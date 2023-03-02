@@ -25,6 +25,8 @@ main {
     width: 100%;
     height: 550px;
     overflow: hidden;
+    max-width: 1920px;
+    background-color: var(--dark);
 }
 /* ========NAVBAR======== */
 .nav-link {
@@ -76,6 +78,8 @@ main {
 }
 .home-title {
     color: rgb(44, 54, 57);
+    text-align: center;
+    align-items: center;
 }
 
 .home-description {
@@ -89,13 +93,12 @@ main {
     background-color: var(--teal);
     color: white;
 }
-.login-header {
-    color: var(--light);
+
+.signin-link {
+    color: white;
 }
-.signup-link {
-    color: var(--tan);
-}
-.signup-text {
+.login-header,
+.signin-text {
     color: var(--light);
 }
 .name-login,
@@ -115,10 +118,45 @@ main {
     padding-left: 45px;
     text-indent: 5px;
 }
-.login-button {
+/* ===============BUTTONS=============== */
+#add-post-button,
+.signup-button {
     border-radius: 25px;
     color: white;
     background-color: var(--gray);
     border: none;
     font-size: 25px;
+}
+#add-post-button:hover,
+.login-button:hover {
+    opacity: 0.65;
+}
+/* ==================INVENTORY FORM==================== */
+#signup-card,
+#inventory-card,
+.new-post-container {
+    border-radius: 25px;
+    margin-bottom: 15px;
+    background-color: var(--teal);
+}
+#inventory-card:hover {
+    background-color: var(--teal);
+}
+#signup-title,
+#inventory-link,
+#inventory-title {
+    color: white;
+}
+#inventory-link {
+    margin-top: 50px;
+    text-align: center;
+    text-decoration: none;
+}
+.inv-link {
+    color: var(--light);
+}
+.user-icon,
+.password-icon,
+.pass-ver-icon {
+    background-color: var(--gray);
 }
