@@ -20,7 +20,7 @@ Liquor.init(
             allowNull: false,
         },
         volume_size: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.STRING,
         },
         description: {
             type: DataTypes.STRING,
