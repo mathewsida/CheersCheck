@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const express = require('express');
 const routes = require('./controllers');
-const sequelize = require('./config/connection');
+const Sequelize = require('./config/connection');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 
@@ -14,7 +14,7 @@ const helpers = require('./utils/helpers');
 const hbs = exphbs.create({ helpers });
 
 const sess = {
-  // secret: '',     (need to add secret)
+  secret: 'supersecretsecret',
   cookie: {
     // Session will automatically expire in 10 minutes
     expires: 100 * 60 * 1000
