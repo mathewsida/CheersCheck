@@ -33,7 +33,7 @@ Liquor.init(
         },
         user_id: {
             type: DataTypes.INTEGER,
-            reference: {
+            references: {
                 model: 'user',
                 key: 'id',
             },
