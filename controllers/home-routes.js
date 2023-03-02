@@ -16,10 +16,7 @@ router.get('/', (req, res) => {
         model: Comment,
         attributes: [
           'id',
-          'name',
           'description',
-          'liquor_type',
-          'volume_size',
           'date_created',
         ],
         include: {
