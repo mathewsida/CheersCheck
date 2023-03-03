@@ -47,6 +47,36 @@
     {{/each}}
 </div>
 
+{{!-- COMMENTS --}}
+<div class="comment-container mt-5">
+    <div class="container-fluid vh-100 new-post-container" style="margin-top:300px">
+        <div class="text-center">
+            <h3 class="cheers-cont-title">Cheers to Comments!</h3>
+            </br>
+            <div id="dash-comments">
+                <ul>
+                    {{#each comments}}
+                    <li class="comment-list">" {{comment_text}} " - {{user.username}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+            </br>
+            {{!-- <div class="home-card card">
+                <div class="card-body">
+                    <div class="card-header">
+                        <a id="home-post-info" class="card-title" href="/posts/{{id}}">{{title}} - {{format_date
+                            date_created}}</a>
+                    </div>
+                </div>
+            </div> --}}
+        </div>
+    </div>
+</div>
+</br>
+<p>No comments have been created yet.</p>
+</div>
+
+
 <script src="/js/comment.js"></script>
 {{!--
 <script src="/js/editComment.js"></script>
