@@ -99,6 +99,7 @@ SO THAT I can  I can share with friends and other users who might have similar t
 
 ## Author ✏️
 Avery Caldwell: GitHub - [https://github.com/AveryCaldwell](https://github.com/AveryCaldwell)
+Robert Schauss: Github - [https://github.com/appleschaussaa](https://github.com/appleschaussaa)
 
 <br>
 
