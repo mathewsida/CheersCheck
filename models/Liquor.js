@@ -5,7 +5,7 @@ class Liquor extends Model {}
 
 Liquor.init(
     {
-        id: {
+        liquor_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -15,28 +15,20 @@ Liquor.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        liquor_type: {
+        type: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        volume_size: {
+        volume: {
             type: DataTypes.STRING,
         },
         description: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        date_created: {
-            type: DataTypes.DATE,
+        image: {
+            type: DataTypes.STRING,
             allowNull: false,
-            defaultValue: DataTypes.NOW,
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id',
-            },
         },
     },
     {

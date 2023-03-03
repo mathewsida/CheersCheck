@@ -1,35 +1,38 @@
 // for future development
+const { Comment } = require('../models');
 const comments = [
     {
-        username: 'Michael Scott',
         message:
             "I see that you have a great selection of whiskey. Have you tried the Blanton's Single Barrel Bourbon?",
-        user_id: '1',
+        created_by: '1',
+        inventory_id: '1',
     },
     {
-        username: 'Pam Beasley',
         message:
             'I love the variety of spirits you have! Have you ever made a Hemingway Daiquiri with the Havana Club Añejo Blanco?',
-        user_id: '2',
+        created_by: '2',
+        inventory_id: '1',
     },
     {
-        username: 'Dwight Shrute',
         message:
             'You have a nice collection of gin. Have you tried the Botanist Islay Dry Gin? It has a unique flavor profile with 31 botanicals!',
-        user_id: '3',
+        created_by: '3',
+        inventory_id: '1',
     },
     {
-        username: 'Stanley Hudson',
         message:
             'Great selection of tequila! Have you tried the Clase Azul Reposado? It has a smooth taste with hints of vanilla and caramel.',
-        user_id: '4',
+        created_by: '4',
+        inventory_id: '1',
     },
     {
-        username: 'Jim Halpert',
         message:
             'I see you have some bitters in your collection. Have you tried the Bittermens Xocolatl Mole Bitters? They add a nice chocolate and spice flavor to cocktails!',
-        user_id: '5',
+        created_by: '5',
+        inventory_id: '1',
     },
 ];
 
-module.exports = comments;
+const seedComments = () => Comment.bulkCreate(comments);
+
+module.exports = seedComments;
