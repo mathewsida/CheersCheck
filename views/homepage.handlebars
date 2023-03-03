@@ -1,7 +1,7 @@
-{{#if logged_in}}
+{{#if loggedIn}}
 <h1 id="home-greeting"> Cheers, {{user.username}}!</h1>
 {{/if}}
-{{!-- {{#if logged_in}} --}}
+{{!-- {{#if loggedIn}} --}}
 <div class="container-fluid vh-100 new-post-container" style="margin-top:100px">
     <div class="rounded d-flex justify-content-center inventory-container">
         <div class="col-md-4 col-sm-12 shadow-lg p-5 " id="inventory-card">
@@ -35,7 +35,7 @@
             </div>
             <div class="col-md-4 d-sm-none d-md-block"></div>
             <img src="./images/bar-logo.png" class="d-block w-100 img-fluid" alt="image">
-            {{!-- {{#if logged_in}} --}}
+            {{!-- {{#if loggedIn}} --}}
             <p id="inventory-link">Go to your <a href="/inventory" class="inv-link">Liquor
                     Cabinet</a> </p>
             {{!-- {{/if}} --}}
