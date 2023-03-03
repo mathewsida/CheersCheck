@@ -1,23 +1,132 @@
-<!-- Loop over each object in the posts array -->
-{{#if posts}}
-<h2 id="home-title">Posts</h2>
-<div class="home-card card">
-    <div class="card-body">
-        {{#each posts}}
-        <div class="card-header">
-            <a id="home-post-info" class="card-title" href="/posts/{{id}}">{{title}} - {{format_date
-                date_created}}</a>
+{{#if logged_in}}
+<h1 id="home-greeting"> Cheers, {{user.username}}!</h1>
+{{/if}}
+{{!-- {{#if logged_in}} --}}
+<div class="container-fluid vh-100 new-post-container" style="margin-top:100px">
+    <div class="rounded d-flex justify-content-center inventory-container">
+        <div class="col-md-4 col-sm-12 shadow-lg p-5 " id="inventory-card">
+            <div class="text-center">
+                <h3 id="inventory-title">Add To Inventory</h3>
+            </div>
+            <div class="p-4">
+                <div class="input-group mb-3 title-text-add">
+                    <span class="input-group-text"><i class="bi "></i></span>
+                    <input type="text" class="form-control" placeholder="Alcohol Type">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="bi"></i></span>
+                    <input type="text" class="form-control content" placeholder="Name">
+                </div>
+                <div class="input-group mb-3 bottle-size">
+                    <span class="input-group-text">
+                        <i class="bi "></i></span>
+                    <input type="text" class="form-control" placeholder="Size">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">
+                        <i class="bi "></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Description"> </input>
+                </div>
+                <div class="d-grid col-12 mx-auto">
+                    <button class="btn " id="add-post-button" type="submit"><span></span>
+                        Cheers!</button>
+                </div>
+            </div>
+            <div class="col-md-4 d-sm-none d-md-block"></div>
+            <img src="./images/bar-logo.png" class="d-block w-100 img-fluid" alt="image">
+            {{!-- {{#if logged_in}} --}}
+            <p id="inventory-link">Go to your <a href="/inventory" class="inv-link">Liquor
+                    Cabinet</a> </p>
+            {{!-- {{/if}} --}}
         </div>
-        </br>
-        <p id="home-post-content" class="card-text">{{content}}</p>
-        </br>
-        <p class="card-subtitle mb-2 text-muted home-user">Posted by {{user.username}} on {{format_date date_created}}
-        </p>
-        </br>
-        {{/each}}
     </div>
+
+
+    {{!-- CABINET --}}
+    <div class="container">
+        <div class="inventory-cabinet">
+            {{!-- cabinet 1 --}}
+            <div class="drawer"></div>
+            <div class="drawer"></div>
+            <div class="drawer"></div>
+            <div class="drawer"></div>
+            <div class="drawer"></div>
+            <div class="drawer"></div>
+            <div class="drawer"></div>
+            <div class="drawer"></div>
+            <div class="drawer"></div>
+        </div>
+        {{!-- cabinet 2 --}}
+        <div class="inventory-cabinet">
+            <div class="drawer"></div>
+            <div class="drawer"></div>
+            <div class="drawer"></div>
+            <div class="drawer"></div>
+            <div class="drawer"></div>
+            <div class="drawer"></div>
+            <div class="drawer"></div>
+            <div class="drawer"></div>
+            <div class="drawer"></div>
+        </div>
+    </div>
+
+
+
+    {{!-- INVENTORY LIST --}}
+    <div class="inventory-list">
+        <h3>My Inventory</h3>
+        <ul class="list-group">
+            <li class="list-group-item">{{liquor_type}}Placeholder</li>
+            <li class="list-group-item">{{liquor_type}}Placeholder</li>
+            <li class="list-group-item">{{liquor_type}}Placeholder</li>
+            <li class="list-group-item">{{liquor_type}}Placeholder</li>
+            <li class="list-group-item">{{liquor_type}}Placeholder</li>
+        </ul>
+    </div>
+
+
+
+    {{!-- COMMENTS --}}
+    <div class="comment-container mt-5">
+        <div class="container-fluid vh-100 new-post-container" style="margin-top:300px">
+            <div class="text-center">
+                <h3 class="cheers-cont-title">Cheers to Comments!</h3>
+                </br>
+                <div id="dash-comments">
+                    <ul>
+                        {{#each comments}}
+                        <li class="comment-list">" {{comment_text}} " - {{user.username}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+                </br>
+                {{!-- <div class="home-card card">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <a id="home-post-info" class="card-title" href="/posts/{{id}}">{{title}} - {{format_date
+                                date_created}}</a>
+                        </div>
+                    </div>
+                </div> --}}
+            </div>
+        </div>
+    </div>
+    </br>
+    <p>No comments have been created yet.</p>
+</div>
+
+{{!-- </br>
+</br> --}}
+{{!-- FUTURE DEVELOPMENT --}}
+{{!-- <H2>Future Development</H2>
+<div class="cheers-container">
+    <h3 class="">Check Your Cheers</h3>
+    <img src="./images/cheers.gif" class="cheers-gif" />
+    <p id="total-cheers">Cheers Check: (cheers total #)<img src="./images/cheersIcon.png" class="cheers-icon" />
+    </p>
+    <p>Cheers Your Friends!</p>
+    <button class="btn cheers-btn" type="submit">Cheers!</button>
 </div>
 </br>
-{{else}}
-<p>No posts have been created yet.</p>
-{{/if}}
+</br> --}}

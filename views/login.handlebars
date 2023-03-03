@@ -1,24 +1,33 @@
-<div class="postContainer container-fluid mt-5">
-    <div class="card">
-        <div id="card-body">
-            <h3 class="card-header login-header">Login</h3>
-            </br>
-            <form id="login" class="form login-form">
-                <div class="form-group">
-                    <label for="name-login" class="name-login">Username:</label>
-                    <input class="form-input" type="text" id="name-login" />
+<div class="container-fluid vh-100 postContainer" style="margin-top:100px">
+    <div class="rounded d-flex justify-content-center login-container">
+        <div class="col-md-4 col-sm-12 shadow-lg p-5" id="login-card">
+            <div class="text-center">
+                <h3 id="login-title">Login</h3>
+            </div>
+            <div class="p-4 login-form">
+                <div class="input-group mb-3 login-text">
+                    <span class="input-group-text user-icon"><i class="bi bi-person-plus-fill text-white"></i></span>
+                    <input type="text" class="form-control" id="name-login" placeholder="Username">
                 </div>
-                <div class="form-group">
-                    <label for="password-login" class="password-login">Password:</label>
-                    <input class="form-input" type="password" id="password-login" />
+                <div class="input-group mb-3">
+                    <span class="input-group-text password-icon">
+                        <i class="bi bi-lock-fill text-white "></i></span>
+                    <input type="password" class="form-control " id="password-login" placeholder="Password">
                 </div>
-                <div class="form-group">
-                    <button class="btn btn-primary login-button" type="submit">Login</button>
+                <div class="input-group mb-3">
+                    <span class="input-group-text  pass-ver-icon">
+                        <i class="bi bi-unlock-fill text-white"></i></span>
+                    <input type="password" class="form-control" id="password-verif" placeholder="Confirm Password">
                 </div>
-                </br>
-                <h3 class="form-group">Dont have an account? <a href="/signup">Sign up here!</a>
-                </h3>
-            </form>
+                <div class="d-grid col-12 mx-auto">
+                    <button class="btn login-button" type="button"><span></span> Login</button>
+                </div>
+                <br>
+                <p class="text-center mt-3 login-text">Dont have an account?
+                    <a href="/signup" class="login-link">Signup!</a>
+                </p>
+
+            </div>
         </div>
     </div>
 </div>

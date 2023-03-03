@@ -1,0 +1,281 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+:root {
+    --dark: rgb(44, 54, 57);
+    --teal: rgb(63, 78, 79);
+    --tan: rgb(162, 123, 92);
+    --light: rgb(220, 215, 201);
+}
+main,
+body {
+    background-color: var(--teal);
+}
+
+/* ====================================HEADER=================================== */
+.cheers-icon {
+    width: 200px;
+    height: 100px;
+}
+.cheers-gif {
+    width: 300px;
+    height: 200px;
+}
+#jumbo-header {
+    height: 550px;
+    overflow: hidden;
+    background-color: var(--dark);
+    max-width: 1920px; /* Set maximum width to 100% of the parent container */
+    min-width: 600px; /* Set minimum width to 600px */
+    width: 100%; /* Let the image adjust its height to maintain its aspect ratio */
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+.header-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: var(--dark);
+    width: 100%;
+    height: auto;
+}
+
+/* ====================================NAVBAR=================================== */
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+.nav-link:hover {
+    color: var(--tan);
+}
+#nav-background {
+    background-color: var(--dark);
+    display: flex;
+    justify-content: space-between; /* evenly space the nav links */
+    align-items: center;
+    width: 100%;
+    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.3); /* add a bottom shadow */
+}
+#logout {
+    text-decoration: none;
+}
+
+/* ====================================LOGIN=================================== */
+.login-container,
+#login-card {
+    border-radius: 25px;
+    margin-bottom: 15px;
+    background-color: var(--teal);
+    color: white;
+}
+
+.login-header,
+.signin-text {
+    color: var(--light);
+    font-size: 20px;
+}
+.name-login,
+.password-login {
+    font-size: 24px;
+    padding: 5px;
+}
+#name-login,
+#password-login {
+    padding-left: 10px;
+    width: 25%;
+    height: auto;
+    font-size: 26px;
+    /* border-radius: 12px; */
+}
+#login {
+    padding-left: 45px;
+    text-indent: 5px;
+}
+.login-text,
+.signin-link {
+    color: white;
+    font-size: 20px;
+}
+
+/* ==============================SIGNUP============================= */
+.signup-container,
+#signup {
+    border-radius: 25px;
+    background-color: var(--dark);
+    color: white;
+    width: 75%;
+}
+
+.signup-container {
+    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.3); /* add a bottom shadow */
+}
+
+#signup-title {
+    color: var(--light);
+    font-size: 32px;
+    padding: 5px;
+    margin-top: 25px;
+}
+.username-signup,
+.email-signup,
+.password-signup {
+    font-size: 24px;
+    padding: 5px;
+}
+#username-signup,
+#email-signup,
+#password-signup {
+    padding-left: 10px;
+    width: 100%;
+    height: auto;
+}
+
+#signup {
+    padding-left: 15px;
+}
+#signup-btn,
+.go-to-login {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* ==============================BUTTONS============================= */
+.cheers-btn,
+#add-post-button,
+#signup-btn,
+.login-button {
+    border-radius: 25px;
+    color: white;
+    background-color: var(--gray);
+    border: none;
+    font-size: 25px;
+}
+.cheers-btn:hover,
+#signup-btn:hover #add-post-button:hover,
+.login-button:hover {
+    opacity: 0.65;
+}
+/* ==================INVENTORY INPUT FORM on HOMEPAGE==================== */
+#login-card,
+#inventory-card,
+.new-post-container {
+    border-radius: 25px;
+    /* margin-bottom: 15px; */
+    background-color: var(--dark);
+    min-width: 600px; /* Set minimum width to 600px */
+}
+#signup-title,
+#inventory-link,
+#inventory-title,
+.cheers-cont-title {
+    color: white;
+}
+#inventory-link {
+    margin-top: 50px;
+    text-align: center;
+    text-decoration: none;
+}
+.inv-link,
+.login-link {
+    color: var(--light);
+    font-size: 20px;
+}
+.user-icon,
+.password-icon,
+.pass-ver-icon {
+    background-color: var(--gray);
+}
+.new-post-container,
+.inventory-container {
+    background-color: var(--teal);
+    /* height: 900px; */
+    margin-bottom: 50px;
+    position: relative;
+}
+
+/* ========================INVENTORY CABINET======================== */
+.container {
+    display: flex;
+    max-width: 1000px; /* Set a maximum width */
+    width: 100%; /* Set the initial width to 100% */
+    margin: 0 auto; /* Center the container horizontally */
+    box-sizing: border-box; /* Include padding and borders in the width */
+}
+
+.inventory-cabinet {
+    background-image: url('/images/cabinet.png');
+    width: 500px;
+    height: 500px;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.drawer {
+    width: calc((500px - (8 * 5px)) / 3);
+    height: calc((500px - (8 * 5px)) / 3);
+    margin: 5px;
+    border: 1px solid black;
+    flex-shrink: 1;
+}
+/* ========================INVENTORY LIST======================== */
+
+.inventory-list {
+    margin-top: 50px;
+    width: 90%;
+    background-color: transparent;
+    min-width: 500px;
+}
+
+.inventory-list h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: white;
+    text-indent: 15px;
+}
+
+.list-group {
+    font-size: 20px;
+    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.9);
+    border: 5px solid black;
+    border-radius: 12px;
+}
+
+.list-group-item {
+    background-color: var(--tan);
+    border: none;
+    border-radius: 0;
+    padding: 10px 20px;
+}
+
+.list-group-item:hover {
+    background-color: var(--light);
+}
+
+.list-group-item.active {
+    background-color: var(--teal);
+    color: white;
+}
+
+/* ========================COMMENT CONTAINER======================== */
+.comment-container {
+    position: relative;
+}
+
+/* ========================CHEERS CONTAINER======================== */
+.cheers-container {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 50px;
+    border-radius: 25px;
+    width: 50%;
+    text-align: center;
+}

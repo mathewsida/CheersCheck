@@ -1,5 +1,5 @@
 {{!-- iterates through an array of comments (with the Comment identifier), and displays each comment --}}
-<div id="container card-container">
+<div id="container comment-container card-container">
     {{#each Comment}}
     <div class="card comment">
         <div class="card-body">
@@ -30,21 +30,17 @@
     <div class="card comment">
         {{#each comments}}
         <div class="card-header">
-            <p>{{title}}</p>
+            <p>{{message}}</p>
             <p class="card-text">{{body}}</p>
             <form class="updateCommentForm">
-                {{!-- <input type="hidden" name="comment_id" value="{{id}}"> --}}
                 <textarea type="hidden" name="comment_id">{{id}}</textarea>
                 <div class="form-group">
-                    <label for="title">Title:</label>
-                    {{!-- <input type="text" class="form-control" name="title" value="{{title}}"> --}}
-                    <textarea type="text" class="form-control" name="title">{{title}}</textarea>
-                </div>
-                <div class="form-group card-body">
-                    <label for="body">Content:</label>
-                    <textarea class="form-control comment-content"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary update-btn">Update</button>
+                    <div class="form-group card-body">
+                        <label for="body">Comment:</label>
+                        <textarea class="form-control comment-content" name="message">{{message}}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary update-btn">Update</button>
+                    <button type="button" class="delete-post-btn btn" id="delete-post-button">Delete Post</button>
             </form>
         </div>
     </div>
@@ -52,3 +48,6 @@
 </div>
 
 <script src="/js/comment.js"></script>
+{{!--
+<script src="/js/editComment.js"></script>
+<script src="/js/deleteComment.js"></script> --}}
