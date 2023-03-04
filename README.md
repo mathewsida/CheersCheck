@@ -70,6 +70,7 @@ SO THAT I can  I can share with friends and other users who might have similar t
 - Node.js, Express
 - Dotenv, Bycrypt
 - Heroku, GitHub
+- JSHint, Npm
 
 
 <br>
