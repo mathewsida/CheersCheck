@@ -10,7 +10,7 @@ class User extends Model {
 
 User.init(
     {
-        id: {
+        user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -18,32 +18,39 @@ User.init(
         },
         username: {
             type: DataTypes.STRING,
-            allowNull: false,
+            // allowNull: false,
+            // unique: true,
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
-            validate: {
-                isEmail: true,
-            },
+            // unique: true,
+            // validate: {
+            //     isEmail: true,
+            // },
         },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [10],
+                len: [5],
             },
         },
     },
     {
         hooks: {
             beforeCreate: async (newUserData) => {
-                newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                newUserData.password = await bcrypt.hash(
+                    newUserData.password,
+                    10
+                );
                 return newUserData;
             },
             beforeUpdate: async (updatedUserData) => {
-                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+                updatedUserData.password = await bcrypt.hash(
+                    updatedUserData.password,
+                    10
+                );
                 return updatedUserData;
             },
         },

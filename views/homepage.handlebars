@@ -1,5 +1,7 @@
 {{#if loggedIn}}
-<h1 id="home-greeting"> Cheers, {{user.username}}!</h1>
+
+<h1 id="home-greeting"> Cheers, {{username}}!</h1>
+
 {{/if}}
 {{!-- {{#if loggedIn}} --}}
 <div class="container-fluid vh-100 new-post-container" style="margin-top:100px">
@@ -74,21 +76,31 @@
 
 
     {{!-- INVENTORY LIST --}}
+    {{#if inventory}}
     <div class="inventory-list">
         <h3>My Inventory</h3>
-        <ul class="list-group">
-            <li class="list-group-item">{{liquor_type}}Placeholder</li>
-            <li class="list-group-item">{{liquor_type}}Placeholder</li>
-            <li class="list-group-item">{{liquor_type}}Placeholder</li>
-            <li class="list-group-item">{{liquor_type}}Placeholder</li>
-            <li class="list-group-item">{{liquor_type}}Placeholder</li>
-        </ul>
+        <table class="list-group">
+            <tr>
+                <td>Thumbs Up Icon</td>
+                <td>Brand</td>
+                <td>Size</td>
+                <td>Description</td>
+            </tr>
+            {{#each inventory}}
+            <tr>
+                <td>{{favorite}}</td>
+                <td>{{liquors.0.name}}</td>
+                <td>{{liquors.0.volume}}</td>
+                <td>{{liquors.0.description}}</td>
+            </tr>
+            {{/each}}
+            </ul>
     </div>
-
+    {{/if}}
 
 
     {{!-- COMMENTS --}}
-    <div class="comment-container mt-5">
+    {{!-- <div class="comment-container mt-5">
         <div class="container-fluid vh-100 new-post-container" style="margin-top:300px">
             <div class="text-center">
                 <h3 class="cheers-cont-title">Cheers to Comments!</h3>
@@ -101,20 +113,20 @@
                     </ul>
                 </div>
                 </br>
-                {{!-- <div class="home-card card">
+                <div class="home-card card">
                     <div class="card-body">
                         <div class="card-header">
                             <a id="home-post-info" class="card-title" href="/posts/{{id}}">{{title}} - {{format_date
                                 date_created}}</a>
                         </div>
                     </div>
-                </div> --}}
+                </div>
             </div>
         </div>
     </div>
     </br>
     <p>No comments have been created yet.</p>
-</div>
+</div> --}}
 
 {{!-- </br>
 </br> --}}

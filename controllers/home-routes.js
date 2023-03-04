@@ -1,66 +1,87 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Liquor, User, Comment } = require('../models');
+const { Liquor, User, Comment, Inventory } = require('../models');
 
 router.get('/', (req, res) => {
-  Liquor.findAll({
-    attributes: [
-      'id',
-      'name',
-      'description',
-      'date_created',
-      'liquor_type',
-    ],
-    include: [
-      {
-        model: Comment,
-        attributes: [
-          'id',
-          'description',
-          'date_created',
-        ],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
-  })
+    if (req.session.user_id !== undefined) {
+        Inventory.findAll({
+            where: {
+                user_id: req.session.user_id,
+            },
+            attributes: ['inventory_id', 'liquor_id', 'user_id', 'favorite'],
+            include: [
+                {
+                    model: Liquor,
+                    required: true,
+                    attributes: [
+                        'name',
+                        'description',
+                        'type',
+                        'volume',
+                        'image',
+                    ],
+                },
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+            ],
+        })
+            .then((dbInventoryData) => {
+                const inventory = dbInventoryData.map((inventory) =>
+                    inventory.get({ plain: true })
+                );
 
-    .then(dbLiquorData => {
-      const liquors = dbLiquorData.map(liquor => liquor.get({ plain: true }));
-      res.render('homepage', {
-        liquors,
-        loggedIn: req.session.loggedIn
-      });
-    })
-    // if server error, then return error
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+                const resObj = { inventory };
+                if (req.session.loggedIn) {
+                    resObj.loggedIn = true;
+                    resObj.username = req.session.username;
+                    resObj.uid = req.session.user_id;
+                }
+                console.log(inventory[0].liquors);
+                res.render('homepage', resObj);
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+        //     .then((dbLiquorData) => {
+        //         const liquors = dbLiquorData.map((liquor) =>
+        //             liquor.get({ plain: true })
+        //         );
+        //         res.render('homepage', {
+        //             liquors,
+        //             loggedIn: req.session.loggedIn,
+        //         });
+        //     })
+        //     // if server error, then return error
+        //     .catch((err) => {
+        //         console.log(err);
+        //         res.status(500).json(err);
+        //     });
+    } else {
+        res.render('homepage', {
+            loggedIn: false,
+        });
+    }
 });
 
 // Render login page and if the user is logged in, redirect to the homepage
 router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-  res.render('login');
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+    res.render('login');
 });
 
 // Render the sign up page and if the user is logged in, redirect to the homepage
 router.get('/signup', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-  res.render('signup');
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+    res.render('signup');
 });
 
 module.exports = router;

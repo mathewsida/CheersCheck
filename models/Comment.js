@@ -5,35 +5,46 @@ class Comment extends Model {}
 
 Comment.init(
     {
-        id: {
+        comment_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
-        description: {
+        message: {
             type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                len: [2],
+            },
         },
-        date_created: {
+        created_date: {
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW,
         },
-        liquor_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'liquor',
-                key: 'id',
-            },
-        },
-        user_id: {
+        // liquor_id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     references: {
+        //         model: 'liquor',
+        //         key: 'id',
+        //     },
+        // },
+        created_by: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'user',
-                key: 'id',
+                key: 'user_id',
+            },
+        },
+        inventory_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'inventory',
+                key: 'inventory_id',
             },
         },
     },
