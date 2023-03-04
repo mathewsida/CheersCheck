@@ -280,3 +280,13 @@ body {
     width: 50%;
     text-align: center;
 }
+
+/* ========================Image Uploader======================== */
+#display_image
+{
+    width: 100px; 
+    height: 100px;
+    border: 1px sold black;
+    background-position: center;
+    background-size: cover; 
+}
