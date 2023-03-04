@@ -14,17 +14,17 @@ const helpers = require('./utils/helpers');
 const hbs = exphbs.create({ helpers });
 
 const sess = {
-  secret: 'supersecretsecret',
-  cookie: {
-    // Session will automatically expire in 10 minutes
-    expires: 100 * 60 * 1000
-  },
-  // false is typically recommended
-  resave: false,
-  saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize
-  })
+    secret: 'supersecretsecret',
+    cookie: {
+        // Session will automatically expire in 10 minutes
+        // expires: 100 * 60 * 1000,
+    },
+    // false is typically recommended
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+        db: sequelize,
+    }),
 };
 
 // sets up express app
@@ -45,6 +45,6 @@ app.use(routes);
 app.use(require('./controllers/'));
 
 // connection to db and server
-sequelize.sync({ force: true }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log('Now listening'));
 });

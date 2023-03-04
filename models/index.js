@@ -26,6 +26,10 @@ Inventory.hasMany(Liquor, {
     foreignKey: 'liquor_id',
 });
 
+Liquor.belongsTo(Inventory, {
+    foreignKey: 'liquor_id',
+});
+
 Comment.belongsTo(User, {
     foreignKey: 'created_by',
 });
