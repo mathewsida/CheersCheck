@@ -45,7 +45,7 @@ const signupFormHandler = async (event) => {
     }).then((response) => {
         if (response.ok) {
             console.log('Account successfully created!');
-            document.location.replace('/dashboard');
+            document.location.replace('/');
         } else {
             alert('UH OH! Something went wrong. Sign up failed.');
         }

@@ -10,7 +10,10 @@ const liquorImage = document.getElementById('liquorImage');
 const inventoryContainer = document.querySelector('.inventory-container');
 const favoriteSwitch = document.querySelector('#addFavorite');
 const addPostButton = document.querySelector('#add-post-button');
+const deleteItemButton = document.querySelector('#deleteItemButton');
 let currentlySelectedLiquor;
+let rowSelected;
+let table;
 document.addEventListener('DOMContentLoaded', function () {
     closeButton.addEventListener('click', function () {
         addModal();
@@ -28,13 +31,55 @@ document.addEventListener('DOMContentLoaded', function () {
     addPostButton.addEventListener('click', function () {
         addToInventory();
     });
+    deleteItemButton.addEventListener('click', function () {
+        deleteInventoryItem();
+    });
     $(document).ready(function () {
-        $('#inventoryTable').DataTable({
+        table = $('#inventoryTable').DataTable({
             scrollY: '462px',
+            columnDefs: [
+                {
+                    target: 1,
+                    visible: false,
+                    searchable: false,
+                },
+            ],
         });
+        $('#inventoryTable tbody')
+            .off('click', 'tr')
+            .on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                    rowSelected = undefined;
+                    deleteItemButton.disabled = true;
+                } else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                    rowSelected = table.row(this).index();
+                    deleteItemButton.disabled = false;
+                }
+            });
         populateDrawer();
     });
 });
+
+const deleteInventoryItem = async () => {
+    if (rowSelected !== undefined) {
+        let target = table.row(rowSelected).data()[1];
+        console.log(target);
+        const response = await fetch(`api/inventory/${target}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+        });
+        if (response.ok) {
+            location.reload();
+        } else {
+            alert('Failed to delete item.');
+        }
+    } else {
+        alert('Please select item to delete.');
+    }
+};
 
 const populateDrawer = async () => {
     const response = await fetch(`api/inventory/true`, {
@@ -119,6 +164,7 @@ const addModal = () => {
     liquorImage.style = 'visibility:hidden';
     favoriteSwitchContainer.style = 'visibility:hidden';
     addPostButton.disabled = true;
+    liquorSelect.value = 0;
     if (addCardVisibleState) {
         anime({
             targets: inventoryContainer,

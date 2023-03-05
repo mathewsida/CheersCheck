@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 const { Liquor, User, Comment, Inventory } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, (req, res) => {
+router.get('/', (req, res) => {
     if (req.session.user_id !== undefined) {
         Inventory.findAll({
             where: {
@@ -70,6 +70,7 @@ router.get('/', withAuth, (req, res) => {
 
 // Render login page and if the user is logged in, redirect to the homepage
 router.get('/login', (req, res) => {
+    console.log(req.session);
     if (req.session.loggedIn) {
         res.redirect('/');
         return;

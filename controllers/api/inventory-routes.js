@@ -63,33 +63,33 @@ router.get('/:favorites', withAuth, (req, res) => {
     }
 });
 
-router.get('/favorites/', withAuth, (req, res) => {
-    Inventory.findAll({
-        where: {
-            favorite: 'balls',
-            user_id: req.session.user_id,
-        },
-        attributes: ['inventory_id', 'liquor_id', 'user_id', 'favorite'],
-        include: [
-            {
-                model: Liquor,
-                attributes: [
-                    'liquor_id',
-                    'name',
-                    'description',
-                    'type',
-                    'volume',
-                    'image',
-                ],
-            },
-        ],
-    })
-        .then((dbInventoryData) => res.json(dbInventoryData))
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-});
+// router.get('/favorites/', withAuth, (req, res) => {
+//     Inventory.findAll({
+//         where: {
+//             favorite: 'balls',
+//             user_id: req.session.user_id,
+//         },
+//         attributes: ['inventory_id', 'liquor_id', 'user_id', 'favorite'],
+//         include: [
+//             {
+//                 model: Liquor,
+//                 attributes: [
+//                     'liquor_id',
+//                     'name',
+//                     'description',
+//                     'type',
+//                     'volume',
+//                     'image',
+//                 ],
+//             },
+//         ],
+//     })
+//         .then((dbInventoryData) => res.json(dbInventoryData))
+//         .catch((err) => {
+//             console.log(err);
+//             res.status(500).json(err);
+//         });
+// });
 
 // get liquor by ID
 // router.get('/:id', (req, res) => {
@@ -153,25 +153,26 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 // // delete liquor
-// router.delete('/:id', withAuth, (req, res) => {
-//     Liquor.destroy({
-//         where: {
-//             id: req.params.id,
-//         },
-//     })
-//         .then((dbLiquorData) => {
-//             if (!dbLiquorData) {
-//                 res.status(404).json({
-//                     message: 'No liquor found with this id!',
-//                 });
-//                 return;
-//             }
-//             res.json(dbLiquorData);
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//             res.status(500).json(err);
-//         });
-// });
+router.delete('/:id', withAuth, (req, res) => {
+    Inventory.destroy({
+        where: {
+            inventory_id: req.params.id,
+            user_id: req.session.user_id,
+        },
+    })
+        .then((dbLiquorData) => {
+            if (!dbLiquorData) {
+                res.status(404).json({
+                    message: 'No liquor found with this id!',
+                });
+                return;
+            }
+            res.json(dbLiquorData);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 
 module.exports = router;

@@ -5,7 +5,11 @@
     {{#if loggedIn}}
     <div class="inventory-header">
         <h3>Cheers, {{username}}!</h3>
-        <button class="btn modal-button" id="openAddInventoryButton">Add to Inventory</button>
+        <div>
+
+            <button class="btn modal-button" id="openAddInventoryButton">Add to Inventory</button>
+            <button class="btn modal-button" disabled id="deleteItemButton">Delete Item</button>
+        </div>
     </div>
     {{/if}}
     <div class="flex-container">
@@ -50,6 +54,7 @@
                     <thead>
                         <tr>
                             <th scope="col">&#x2605;</th>
+                            <th scope="col">id</th>
                             <th scope="col">Brand</th>
                             <th scope="col">Size</th>
                             <th scope="col">Description</th>
@@ -60,6 +65,7 @@
                         {{#each inventory}}
                         <tr>
                             <td>{{#if favorite}}&#x2605;{{else}}{{/if}}</td>
+                            <td>{{inventory_id}}</td>
                             <td>{{liquor.name}}</td>
                             <td>{{liquor.volume}}</td>
                             <td>{{liquor.description}}</td>

@@ -101,12 +101,17 @@ body {
 }
 
 /* ==============================SIGNUP============================= */
-.signup-container,
-#signup {
+.signup-container {
     border-radius: 25px;
     background-color: var(--dark);
     color: white;
-    width: 75%;
+    min-width: 400px;
+    width: 25%;
+}
+
+.signup-form {
+    width: 100%;
+    padding-right: 15px;
 }
 
 .signup-container {
@@ -205,7 +210,7 @@ body {
     width: 150px;
     height: 150px;
     position: absolute;
-    top: 330px;
+    top: 310px;
     left: calc(50% - 75px);
     border: none;
     visibility: hidden;
@@ -266,21 +271,25 @@ body {
 
 .flex-table {
     width: 100%;
+    border-radius: 12px;
 }
 .cabinet-container {
     width: 530px;
     margin-top: 48px;
 }
 .cabinet-image {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
+    margin-left: 5%;
+    margin-top: 10%;
 }
 .inventory-cabinet {
+    border-radius: 12px;
     background-image: url('/images/cabinet.png');
     width: 500px;
     height: 500px;
     background-color: transparent;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     display: flex;
     flex-wrap: wrap;
     position: relative;
@@ -291,7 +300,7 @@ body {
     width: calc((500px - (8 * 5px)) / 3);
     height: calc((500px - (8 * 5px)) / 3);
     margin: 5px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     flex-shrink: 1;
 }
 /* ========================INVENTORY LIST======================== */
