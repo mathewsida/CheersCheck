@@ -2,7 +2,7 @@
 <div class="container-fluid  new-post-container">
 
 
-    {{#if inventory}}
+    {{#if loggedIn}}
     <div class="inventory-header">
         <h3>Cheers, {{username}}!</h3>
         <button class="btn modal-button" id="openAddInventoryButton">Add to Inventory</button>
@@ -42,7 +42,7 @@
 
 
         {{!-- INVENTORY LIST --}}
-        {{#if inventory}}
+        {{#if loggedIn}}
 
         {{!-- <table class="table table-dark"> --}}
             <div id="tableContainer" class="table-container">
@@ -56,6 +56,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{#if inventory}}
                         {{#each inventory}}
                         <tr>
                             <td>{{#if favorite}}&#x2605;{{else}}{{/if}}</td>
@@ -64,6 +65,7 @@
                             <td>{{liquors.0.description}}</td>
                         </tr>
                         {{/each}}
+                        {{/if}}
                     </tbody>
                 </table>
             </div>

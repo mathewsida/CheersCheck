@@ -37,11 +37,8 @@ router.get('/', withAuth, (req, res) => {
                     resObj.loggedIn = true;
                     resObj.username = req.session.username;
                     resObj.uid = req.session.user_id;
-                    resObj.encodedJson = encodeURIComponent(
-                        JSON.stringify(inventory)
-                    );
                 }
-                console.log(inventory[0].liquors);
+
                 res.render('homepage', resObj);
             })
             .catch((err) => {
