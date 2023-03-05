@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Liquor, User, Comment, Inventory } = require('../models');
-
-router.get('/', (req, res) => {
+const withAuth = require('../utils/auth');
+router.get('/', withAuth, (req, res) => {
     if (req.session.user_id !== undefined) {
         Inventory.findAll({
             where: {
@@ -37,6 +37,9 @@ router.get('/', (req, res) => {
                     resObj.loggedIn = true;
                     resObj.username = req.session.username;
                     resObj.uid = req.session.user_id;
+                    resObj.encodedJson = encodeURIComponent(
+                        JSON.stringify(inventory)
+                    );
                 }
                 console.log(inventory[0].liquors);
                 res.render('homepage', resObj);
