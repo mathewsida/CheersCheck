@@ -1,103 +1,82 @@
-{{#if loggedIn}}
-
-<h1 id="home-greeting"> Cheers, {{username}}!</h1>
-
-{{/if}}
 {{!-- {{#if loggedIn}} --}}
-<div class="container-fluid vh-100 new-post-container" style="margin-top:100px">
-    <div class="rounded d-flex justify-content-center inventory-container">
-        <div class="col-md-4 col-sm-12 shadow-lg p-5 " id="inventory-card">
-            <div class="text-center">
-                <h3 id="inventory-title">Add To Inventory</h3>
-            </div>
-            <div class="p-4">
-                <div class="input-group mb-3 title-text-add">
-                    <span class="input-group-text"><i class="bi "></i></span>
-                    <input type="text" class="form-control" placeholder="Alcohol Type">
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text"><i class="bi"></i></span>
-                    <input type="text" class="form-control content" placeholder="Name">
-                </div>
-                <div class="input-group mb-3 bottle-size">
-                    <span class="input-group-text">
-                        <i class="bi "></i></span>
-                    <input type="text" class="form-control" placeholder="Size">
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">
-                        <i class="bi "></i>
-                    </span>
-                    <input type="text" class="form-control" placeholder="Description"> </input>
-                </div>
-                <div class="d-grid col-12 mx-auto">
-                    <button class="btn " id="add-post-button" type="submit"><span></span>
-                        Cheers!</button>
-                </div>
-            </div>
-            <div class="col-md-4 d-sm-none d-md-block"></div>
-            <img src="./images/bar-logo.png" class="d-block w-100 img-fluid" alt="image">
-            {{!-- {{#if loggedIn}} --}}
-            <p id="inventory-link">Go to your <a href="/inventory" class="inv-link">Liquor
-                    Cabinet</a> </p>
-            {{!-- {{/if}} --}}
+<div class="container-fluid  new-post-container">
+
+
+    {{#if loggedIn}}
+    <div class="inventory-header">
+        <h3>Cheers, {{username}}!</h3>
+        <div>
+
+            <button class="btn modal-button" id="openAddInventoryButton">Add to Inventory</button>
+            <button class="btn modal-button" disabled id="deleteItemButton">Delete Item</button>
         </div>
-    </div>
-
-
-    {{!-- CABINET --}}
-    <div class="container">
-        <div class="inventory-cabinet">
-            {{!-- cabinet 1 --}}
-            <div class="drawer"></div>
-            <div class="drawer"></div>
-            <div class="drawer"></div>
-            <div class="drawer"></div>
-            <div class="drawer"></div>
-            <div class="drawer"></div>
-            <div class="drawer"></div>
-            <div class="drawer"></div>
-            <div class="drawer"></div>
-        </div>
-        {{!-- cabinet 2 --}}
-        <div class="inventory-cabinet">
-            <div class="drawer"></div>
-            <div class="drawer"></div>
-            <div class="drawer"></div>
-            <div class="drawer"></div>
-            <div class="drawer"></div>
-            <div class="drawer"></div>
-            <div class="drawer"></div>
-            <div class="drawer"></div>
-            <div class="drawer"></div>
-        </div>
-    </div>
-
-
-
-    {{!-- INVENTORY LIST --}}
-    {{#if inventory}}
-    <div class="inventory-list">
-        <h3>My Inventory</h3>
-        <table class="list-group">
-            <tr>
-                <td>Thumbs Up Icon</td>
-                <td>Brand</td>
-                <td>Size</td>
-                <td>Description</td>
-            </tr>
-            {{#each inventory}}
-            <tr>
-                <td>{{favorite}}</td>
-                <td>{{liquors.0.name}}</td>
-                <td>{{liquors.0.volume}}</td>
-                <td>{{liquors.0.description}}</td>
-            </tr>
-            {{/each}}
-            </ul>
     </div>
     {{/if}}
+    <div class="flex-container">
+        {{!-- CABINET --}}
+        <div class="cabinet-container">
 
+            <div class="inventory-cabinet">
+                {{!-- cabinet 1 --}}
+                <div class="drawer"><img id="drawer0" style="visibility:hidden" class="cabinet-image" /></div>
+                <div class="drawer"><img id="drawer1" style="visibility:hidden" class="cabinet-image" /></div>
+                <div class="drawer"><img id="drawer2" style="visibility:hidden" class="cabinet-image" /></div>
+                <div class="drawer"><img id="drawer3" style="visibility:hidden" class="cabinet-image" /></div>
+                <div class="drawer"><img id="drawer4" style="visibility:hidden" class="cabinet-image" /></div>
+                <div class="drawer"><img id="drawer5" style="visibility:hidden" class="cabinet-image" /></div>
+                <div class="drawer"><img id="drawer6" style="visibility:hidden" class="cabinet-image" /></div>
+                <div class="drawer"><img id="drawer7" style="visibility:hidden" class="cabinet-image" /></div>
+                <div class="drawer"><img id="drawer8" style="visibility:hidden" class="cabinet-image" /></div>
+            </div>
+            {{!-- cabinet 2 --}}
+            {{!-- <div class="inventory-cabinet">
+                <div class="drawer"></div>
+                <div class="drawer"></div>
+                <div class="drawer"></div>
+                <div class="drawer"></div>
+                <div class="drawer"></div>
+                <div class="drawer"></div>
+                <div class="drawer"></div>
+                <div class="drawer"></div>
+                <div class="drawer"></div>
+            </div> --}}
+
+        </div>
+
+
+
+        {{!-- INVENTORY LIST --}}
+        {{#if loggedIn}}
+
+        {{!-- <table class="table table-dark"> --}}
+            <div id="tableContainer" class="table-container">
+                <table class="table table-dark flex-table" id="inventoryTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">&#x2605;</th>
+                            <th scope="col">id</th>
+                            <th scope="col">Brand</th>
+                            <th scope="col">Size</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#if inventory}}
+                        {{#each inventory}}
+                        <tr>
+                            <td>{{#if favorite}}&#x2605;{{else}}{{/if}}</td>
+                            <td>{{inventory_id}}</td>
+                            <td>{{liquor.name}}</td>
+                            <td>{{liquor.volume}}</td>
+                            <td>{{liquor.description}}</td>
+                        </tr>
+                        {{/each}}
+                        {{/if}}
+                    </tbody>
+                </table>
+            </div>
+            {{/if}}
+    </div>
 
     {{!-- COMMENTS --}}
     {{!-- <div class="comment-container mt-5">
@@ -142,3 +121,57 @@
 </div>
 </br>
 </br> --}}
+
+
+{{!-- Add Inventory Modal --}}
+
+</div>
+{{#if loggedIn}}
+<div class="rounded d-flex justify-content-center inventory-container" style="transform:translateX(100%);">
+    <div class=" col-md-4 col-sm-12 shadow-lg p-5 add-inventory-container " id=" inventory-card">
+        <div class="text-center">
+            <h3 id="inventory-title">Add To Inventory</h3>
+        </div>
+        <div class="p-4">
+            <select type="text" class="form-control" name="liquorSelect" id="liquorSelect">
+
+            </select>
+            <div class="input-group mb-3 title-text-add">
+
+            </div>
+            <p id="liquorDescription" class="add-liquor-description"></p>
+            </br>
+            <img src="./images/bar-logo.png" class="d-block w-100 img-fluid" alt="image">
+            <img id="liquorImage" class="add-liquor-image" />
+            </br>
+
+            <div class="form-check form-switch modal-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="addFavorite">
+                <label class="form-check-label" for="addFavorite">Favorite</label>
+            </div>
+
+            </br>
+            <div class="d-grid col-12 mx-auto">
+                <button class="btn modal-button" id="add-post-button" type="button" disabled>
+                    Add</button>
+            </div>
+            </br>
+
+
+            <button class="btn modal-close-button" id="add-close-button" type="button">
+                X</button>
+
+            {{!-- Add in cheers functionality to button? or animate something on the screen to say cheers when you add a
+            thing --}}
+        </div>
+        {{!-- <div class="col-md-4 d-sm-none d-md-block"></div> --}}
+        {{!-- {{#if loggedIn}} --}}
+        {{!-- <p id="inventory-link">Go to your <a href="/inventory" class="inv-link">Liquor
+                Cabinet</a> </p> --}}
+        {{!-- {{/if}} --}}
+    </div>
+</div>
+{{/if}}
+{{#if loggedIn}}
+<script src="/js/homePage.js"></script>
+{{/if}}

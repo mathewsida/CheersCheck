@@ -8,7 +8,7 @@ const Inventory = require('./Inventory');
 //     foreignKey: 'user_id',
 //     onDelete: 'CASCADE',
 // });
-User.hasMany(Inventory, {
+User.hasOne(Inventory, {
     foreignKey: 'inventory_id',
     onDelete: 'CASCADE',
 });
@@ -22,12 +22,10 @@ Inventory.belongsTo(User, {
     foreignKey: 'user_id',
 });
 
-Inventory.hasMany(Liquor, {
-    foreignKey: 'liquor_id',
-});
+Liquor.hasOne(Inventory, {});
 
-Liquor.belongsTo(Inventory, {
-    foreignKey: 'liquor_id',
+Inventory.belongsTo(Liquor, {
+    foreignKey: { name: 'liquor_id' },
 });
 
 Comment.belongsTo(User, {

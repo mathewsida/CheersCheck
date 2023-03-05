@@ -101,12 +101,17 @@ body {
 }
 
 /* ==============================SIGNUP============================= */
-.signup-container,
-#signup {
+.signup-container {
     border-radius: 25px;
     background-color: var(--dark);
     color: white;
-    width: 75%;
+    min-width: 400px;
+    width: 25%;
+}
+
+.signup-form {
+    width: 100%;
+    padding-right: 15px;
 }
 
 .signup-container {
@@ -148,14 +153,25 @@ body {
 
 /* ==============================BUTTONS============================= */
 .cheers-btn,
-#add-post-button,
 #signup-btn,
-.login-button {
+.login-button,
+.modal-button {
     border-radius: 25px;
     color: white;
     background-color: var(--gray);
     border: none;
     font-size: 25px;
+}
+.modal-close-button {
+    border-radius: 25px;
+    color: white;
+    background-color: var(--gray);
+    border: none;
+    font-size: 25px;
+    width: 50px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }
 .cheers-btn:hover,
 #signup-btn:hover #add-post-button:hover,
@@ -164,12 +180,53 @@ body {
 }
 /* ==================INVENTORY INPUT FORM on HOMEPAGE==================== */
 #login-card,
-#inventory-card,
 .new-post-container {
     border-radius: 25px;
     /* margin-bottom: 15px; */
     background-color: var(--dark);
     min-width: 600px; /* Set minimum width to 600px */
+}
+
+/*     <div class="rounded d-flex justify-content-center inventory-container">
+        <div class="col-md-4 col-sm-12 shadow-lg p-5 " id="inventory-card"> */
+.add-inventory-container {
+    border-radius: 25px;
+    /* margin-bottom: 15px; */
+    background-color: var(--dark);
+    height: 650px;
+    width: 600px;
+    /* left: calc(50% - 300px); */
+    top: calc(50% - 325px);
+    position: absolute;
+}
+.modal-switch {
+    width: 100px;
+    left: calc(50% - 50px);
+    color: white;
+    visibility: hidden;
+}
+/* .modal-form-select {} */
+.add-liquor-image {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 310px;
+    left: calc(50% - 75px);
+    border: none;
+    visibility: hidden;
+}
+.inventory-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.add-liquor-description {
+    color: white;
+    height: 50px;
 }
 #inventory-link,
 #inventory-title,
@@ -191,8 +248,7 @@ body {
 .pass-ver-icon {
     background-color: var(--gray);
 }
-.new-post-container,
-.inventory-container {
+.new-post-container {
     background-color: var(--teal);
     /* height: 900px; */
     margin-bottom: 50px;
@@ -200,20 +256,40 @@ body {
 }
 
 /* ========================INVENTORY CABINET======================== */
-.container {
+.flex-container {
     display: flex;
-    max-width: 1000px; /* Set a maximum width */
+    justify-content: space-between;
     width: 100%; /* Set the initial width to 100% */
-    margin: 0 auto; /* Center the container horizontally */
+    flex-direction: row;
+    align-items: stretch;
     box-sizing: border-box; /* Include padding and borders in the width */
 }
 
+.table-container {
+    flex: 1;
+}
+
+.flex-table {
+    width: 100%;
+    border-radius: 12px;
+}
+.cabinet-container {
+    width: 530px;
+    margin-top: 48px;
+}
+.cabinet-image {
+    width: 90%;
+    height: 90%;
+    margin-left: 5%;
+    margin-top: 10%;
+}
 .inventory-cabinet {
+    border-radius: 12px;
     background-image: url('/images/cabinet.png');
     width: 500px;
     height: 500px;
     background-color: transparent;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     display: flex;
     flex-wrap: wrap;
     position: relative;
@@ -224,16 +300,20 @@ body {
     width: calc((500px - (8 * 5px)) / 3);
     height: calc((500px - (8 * 5px)) / 3);
     margin: 5px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     flex-shrink: 1;
 }
 /* ========================INVENTORY LIST======================== */
 
-.inventory-list {
+.inventory-header {
+    display: flex;
     margin-top: 50px;
-    width: 90%;
+    width: 100%;
+    color: white;
     background-color: transparent;
     min-width: 500px;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .inventory-list h3 {
@@ -282,11 +362,10 @@ body {
 }
 
 /* ========================Image Uploader======================== */
-#display_image
-{
-    width: 100px; 
+#display_image {
+    width: 100px;
     height: 100px;
     border: 1px sold black;
     background-position: center;
-    background-size: cover; 
+    background-size: cover;
 }

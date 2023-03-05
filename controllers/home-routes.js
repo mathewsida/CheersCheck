@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Liquor, User, Comment, Inventory } = require('../models');
+const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
     if (req.session.user_id !== undefined) {
@@ -31,14 +32,15 @@ router.get('/', (req, res) => {
                 const inventory = dbInventoryData.map((inventory) =>
                     inventory.get({ plain: true })
                 );
-
+                console.log(inventory);
+                // console.log(inventory[14].liquors);
                 const resObj = { inventory };
                 if (req.session.loggedIn) {
                     resObj.loggedIn = true;
                     resObj.username = req.session.username;
                     resObj.uid = req.session.user_id;
                 }
-                console.log(inventory[0].liquors);
+
                 res.render('homepage', resObj);
             })
             .catch((err) => {
@@ -68,6 +70,7 @@ router.get('/', (req, res) => {
 
 // Render login page and if the user is logged in, redirect to the homepage
 router.get('/login', (req, res) => {
+    console.log(req.session);
     if (req.session.loggedIn) {
         res.redirect('/');
         return;
@@ -77,7 +80,7 @@ router.get('/login', (req, res) => {
 
 // Render the sign up page and if the user is logged in, redirect to the homepage
 router.get('/signup', (req, res) => {
-    if (req.session.loggedIn) {
+    if (req.session.user) {
         res.redirect('/');
         return;
     }
