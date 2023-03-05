@@ -186,7 +186,12 @@ body {
     background-color: var(--dark);
     min-width: 600px; /* Set minimum width to 600px */
 }
-
+.dataTables_length,
+.dataTables_filter,
+.dataTables_info,
+.dataTables_paginate {
+    color: white;
+}
 /*     <div class="rounded d-flex justify-content-center inventory-container">
         <div class="col-md-4 col-sm-12 shadow-lg p-5 " id="inventory-card"> */
 .add-inventory-container {
