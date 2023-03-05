@@ -9,7 +9,7 @@ const Inventory = require('./Inventory');
 //     onDelete: 'CASCADE',
 // });
 User.hasOne(Inventory, {
-    foreignKey: 'inventory_id',
+    foreignKey: 'user_id',
     onDelete: 'CASCADE',
 });
 
