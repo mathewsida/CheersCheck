@@ -47,7 +47,7 @@ const populateDrawer = async () => {
         for (let i = 0; i < data.length; i++) {
             if (i < 9) {
                 target = document.getElementById(`drawer${i}`);
-                target.src = `/images/liquor/${data[i].liquors[0].image}.png`;
+                target.src = `/images/liquor/${data[i].liquor.image}.png`;
                 target.style = 'visibility:visible';
             } else {
                 break;

@@ -112,22 +112,43 @@ router.post('/login', async (req, res) => {
 
             res.json({ user: userData, message: 'You are now logged in!' });
         });
-    } catch (err) 
-    {
+    } catch (err) {
         res.status(400).json(err);
     }
 });
 
-// // logout existing user
-// router.post('/logout', (req, res) => {
-//   if (req.session.loggedIn) {
-//     req.session.destroy(() => {
-//       res.status(204).end();
-//     });
-//   } else {
-//     res.status(404).end();
-//   }
-// })
+// logout existing user
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(404).end();
+    }
+});
+// singup user ('/api/users)
+router.post('/', async (req, res) => {
+    try {
+        const userData = await User.create(req.body, { individualHooks: true });
+
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            // req.session.username = userData.username;
+            req.session.loggedIn = true;
+            res.status(200).json(userData);
+        });
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+// router.get('/signup', (req, res) => {
+//     if (req.session.user) {
+//         res.redirect('/');
+//         return;
+//     }
+//     res.render('signup');
+// });
 
 // // update existing user
 // router.put('/:id', withAuth, (req, res) => {

@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 const userRoutes = require('./user-routes');
 const liquorRoutes = require('./liquor-routes');
-const commentRoutes = require('./comment-routes');
+// const commentRoutes = require('./comment-routes');
 const inventoryRoutes = require('./inventory-routes');
 
 // path routes for api to use
