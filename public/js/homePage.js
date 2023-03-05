@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
     $(document).ready(function () {
         $('#inventoryTable').DataTable({
             scrollY: '462px',
-            //scrollX: true,
         });
         populateDrawer();
     });
@@ -109,9 +108,6 @@ const getLiquorList = async () => {
             option.innerHTML = `${data[i].type} | ${data[i].name} | ${data[i].volume}`;
             await liquorSelect.appendChild(option);
         }
-        //await $('.selectpicker').selectpicker();
-
-        //<img src='/images/liquor/${data[i].image}.png' class='select-image'>
     } else {
         alert('HTTP-Error: ' + response.status);
     }
