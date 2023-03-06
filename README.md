@@ -47,13 +47,13 @@ SO THAT I can  I can share with friends and other users who might have similar t
 ## Screenshot 📸
 ​<br>
 
-![](./public/images/screenshot.png)
+![](./public/images/homepage.png)
 
 
 
 ###  Links 🔗
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Github URL: [https://github.com/mathewsida/CheersCheck](https://github.com/mathewsida/CheersCheck)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 <br>
@@ -71,6 +71,9 @@ SO THAT I can  I can share with friends and other users who might have similar t
 - Dotenv, Bycrypt
 - Heroku, GitHub
 - JSHint, Npm
+- Masonry, Npm
+- Anime.js
+
 
 
 <br>
@@ -99,9 +102,10 @@ SO THAT I can  I can share with friends and other users who might have similar t
 
 
 ## Author ✏️
-Avery Caldwell: GitHub - [https://github.com/AveryCaldwell](https://github.com/AveryCaldwell)
-Robert Schauss: Github - [https://github.com/appleschaussaa](https://github.com/appleschaussaa)
-Louis Kim: Github - [https://github.com/louiskgkim](https://github.com/louiskgkim)
+- Avery Caldwell: GitHub - [https://github.com/AveryCaldwell](https://github.com/AveryCaldwell)
+- Robert Schauss: Github - [https://github.com/appleschaussaa](https://github.com/appleschaussaa)
+- Louis Kim: Github - [https://github.com/louiskgkim](https://github.com/louiskgkim)
+- Mathew Sida-Nguon: Github - [https://github.com/mathewsida](https://github.com/mathewsida)
 
 <br>
 
