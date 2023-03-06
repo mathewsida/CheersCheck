@@ -4,20 +4,17 @@
 
     {{#if loggedIn}}
     <div class="inventory-header">
-        <h3>Cheers, {{username}}!</h3>
+        <h3 class="greeting"><strong class="bold">Cheers,</strong> {{username}}!</h3>
         <div>
-
             <button class="btn modal-button" id="openAddInventoryButton">Add to Inventory</button>
             <button class="btn modal-button" disabled id="deleteItemButton">Delete Item</button>
         </div>
     </div>
     {{/if}}
     <div class="flex-container">
-        {{!-- CABINET --}}
+        {{!-- LIQUOR CABINET --}}
         <div class="cabinet-container">
-
             <div class="inventory-cabinet">
-                {{!-- cabinet 1 --}}
                 <div class="drawer"><img id="drawer0" style="visibility:hidden" class="cabinet-image" /></div>
                 <div class="drawer"><img id="drawer1" style="visibility:hidden" class="cabinet-image" /></div>
                 <div class="drawer"><img id="drawer2" style="visibility:hidden" class="cabinet-image" /></div>
@@ -28,21 +25,7 @@
                 <div class="drawer"><img id="drawer7" style="visibility:hidden" class="cabinet-image" /></div>
                 <div class="drawer"><img id="drawer8" style="visibility:hidden" class="cabinet-image" /></div>
             </div>
-            {{!-- cabinet 2 --}}
-            {{!-- <div class="inventory-cabinet">
-                <div class="drawer"></div>
-                <div class="drawer"></div>
-                <div class="drawer"></div>
-                <div class="drawer"></div>
-                <div class="drawer"></div>
-                <div class="drawer"></div>
-                <div class="drawer"></div>
-                <div class="drawer"></div>
-                <div class="drawer"></div>
-            </div> --}}
-
         </div>
-
 
 
         {{!-- INVENTORY LIST --}}
@@ -76,61 +59,25 @@
                 </table>
             </div>
 
+            {{!-- IF NOT LOGGED IN --}}
             {{else}}
-            <div class="table-container" style="background-color:black">
-                <p>Placeholder Div</p>
+            <div class="table-container text-white p-5 text-center">
+                <h1 class=" viewer-header text-center">Liquor cabinet empty?</h1>
+                <img src="/images/cheer-btn.png" class="cheersBtn" />
+                <br>
+                <p class="viewer-text text-justify text-center">Login to show collection!</p>
+
+                <p class="viewer-subtitle text-justify text-center"><button class="btn viewer-button"
+                        id="viewerLoginButton"><a href="/login" class="viewButton">LOGIN</a></button> or <button
+                        class="btn viewer-button" id="viewerSignupButton"><a href="/signup"
+                            class="viewButton">SIGNUP</a></button></p>
+                <p class="viewer-text text-justify text-center">Sign up now!</p>
             </div>
             {{/if}}
     </div>
-
-    {{!-- COMMENTS --}}
-    {{!-- <div class="comment-container mt-5">
-        <div class="container-fluid vh-100 new-post-container" style="margin-top:300px">
-            <div class="text-center">
-                <h3 class="cheers-cont-title">Cheers to Comments!</h3>
-                </br>
-                <div id="dash-comments">
-                    <ul>
-                        {{#each comments}}
-                        <li class="comment-list">" {{comment_text}} " - {{user.username}}</li>
-                        {{/each}}
-                    </ul>
-                </div>
-                </br>
-                <div class="home-card card">
-                    <div class="card-body">
-                        <div class="card-header">
-                            <a id="home-post-info" class="card-title" href="/posts/{{id}}">{{title}} - {{format_date
-                                date_created}}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </br>
-    <p>No comments have been created yet.</p>
-</div> --}}
-
-{{!-- </br>
-</br> --}}
-{{!-- FUTURE DEVELOPMENT --}}
-{{!-- <H2>Future Development</H2>
-<div class="cheers-container">
-    <h3 class="">Check Your Cheers</h3>
-    <img src="./images/cheers.gif" class="cheers-gif" />
-    <p id="total-cheers">Cheers Check: (cheers total #)<img src="./images/cheersIcon.png" class="cheers-icon" />
-    </p>
-    <p>Cheers Your Friends!</p>
-    <button class="btn cheers-btn" type="submit">Cheers!</button>
 </div>
-</br>
-</br> --}}
 
-
-{{!-- Add Inventory Modal --}}
-
-</div>
+{{!-- MODAL --}}
 {{#if loggedIn}}
 <div class="rounded d-flex justify-content-center inventory-container" style="transform:translateX(100%);">
     <div class=" col-md-4 col-sm-12 shadow-lg p-5 add-inventory-container " id=" inventory-card">
@@ -162,21 +109,57 @@
             </div>
             </br>
 
-
             <button class="btn modal-close-button" id="add-close-button" type="button">
                 X</button>
 
-            {{!-- Add in cheers functionality to button? or animate something on the screen to say cheers when you add a
-            thing --}}
         </div>
-        {{!-- <div class="col-md-4 d-sm-none d-md-block"></div> --}}
-        {{!-- {{#if loggedIn}} --}}
-        {{!-- <p id="inventory-link">Go to your <a href="/inventory" class="inv-link">Liquor
-                Cabinet</a> </p> --}}
-        {{!-- {{/if}} --}}
+
     </div>
 </div>
 {{/if}}
 {{#if loggedIn}}
 <script src="/js/homePage.js"></script>
 {{/if}}
+
+
+{{!-- FUTURE DEV --}}
+{{!-- COMMENTS --}}
+{{!-- <div class="comment-container mt-5">
+    <div class="container-fluid vh-100 new-post-container" style="margin-top:300px">
+        <div class="text-center">
+            <h3 class="cheers-cont-title">Cheers to Comments!</h3>
+            </br>
+            <div id="dash-comments">
+                <ul>
+                    {{#each comments}}
+                    <li class="comment-list">" {{comment_text}} " - {{user.username}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+            </br>
+            <div class="home-card card">
+                <div class="card-body">
+                    <div class="card-header">
+                        <a id="home-post-info" class="card-title" href="/posts/{{id}}">{{title}} - {{format_date
+                            date_created}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</br>
+<p>No comments have been created yet.</p>
+</div> --}}
+
+{{!-- <H2>Future Development</H2>
+<div class="cheers-container">
+    <h3 class="">Check Your Cheers</h3>
+    <img src="./images/cheers.gif" class="cheers-gif" />
+    <p id="total-cheers">Cheers Check: (cheers total #)<img src="./images/cheersIcon.png" class="cheers-icon" />
+    </p>
+    <p>Cheers Your Friends!</p>
+    <button class="btn cheers-btn" type="submit">Cheers!</button>
+</div>
+</br>
+</br> --}}

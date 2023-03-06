@@ -24,29 +24,25 @@ body {
     height: 200px;
 }
 #jumbo-header {
-    height: 550px;
-    overflow: hidden;
+    height: auto;
     background-color: var(--dark);
-    max-width: 1920px; /* Set maximum width to 100% of the parent container */
-    min-width: 600px; /* Set minimum width to 600px */
     width: 100%; /* Let the image adjust its height to maintain its aspect ratio */
     margin: 0 auto;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 .header-container {
-    display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-color: var(--dark);
     width: 100%;
     height: auto;
 }
 
 /* ====================================NAVBAR=================================== */
 .nav-link {
-    color: white;
+    color: var(--light);
     text-decoration: none;
     font-size: 20px;
+    margin: 0px 40px 0px 40px;
 }
 .nav-link:hover {
     color: var(--tan);
@@ -57,12 +53,66 @@ body {
     justify-content: space-between; /* evenly space the nav links */
     align-items: center;
     width: 100%;
-    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.3); /* add a bottom shadow */
+    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.3);
 }
 #logout {
     text-decoration: none;
 }
 
+.login-nav,
+.signup-nav {
+    margin: 0px 25px 0px 25px;
+    font-size: 30px;
+    color: var(--light);
+}
+.greeting {
+    font-size: 38px;
+    margin-left: 70px;
+}
+
+/* ================================VIEWER PAGE=============================== */
+.viewer-header {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: var(--light);
+    /* color: white; */
+}
+.viewer-text {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: var(--light);
+}
+.viewer-subtitle {
+    font-size: 26px;
+    margin-bottom: 40px;
+}
+#viewerLoginButton,
+#viewerSignupButton {
+    border-radius: 25px;
+    color: white;
+    background-color: var(--tan);
+    border: none;
+    font-size: 25px;
+    margin: 0px 15px 0px 15px;
+}
+#viewerLoginButton:hover,
+#viewerSignupButton:hover {
+    opacity: 0.65;
+}
+.viewButton {
+    text-decoration: none;
+    color: white;
+}
+.viewButton:hover {
+    text-decoration: none;
+    color: white;
+}
+.cheersBtn {
+    width: 125px;
+    height: 125px;
+    margin-bottom: 20px;
+}
 /* ====================================LOGIN=================================== */
 .login-container,
 #login-card {
@@ -162,6 +212,9 @@ body {
     border: none;
     font-size: 25px;
 }
+.modal-button {
+    margin-right: 30px;
+}
 .modal-close-button {
     border-radius: 25px;
     color: white;
@@ -178,6 +231,7 @@ body {
 .login-button:hover {
     opacity: 0.65;
 }
+
 /* ==================INVENTORY INPUT FORM on HOMEPAGE==================== */
 #login-card,
 .new-post-container {
@@ -192,8 +246,7 @@ body {
 .dataTables_paginate {
     color: white;
 }
-/*     <div class="rounded d-flex justify-content-center inventory-container">
-        <div class="col-md-4 col-sm-12 shadow-lg p-5 " id="inventory-card"> */
+
 .add-inventory-container {
     border-radius: 25px;
     /* margin-bottom: 15px; */
@@ -308,6 +361,7 @@ body {
     /* border: 1px solid black; */
     flex-shrink: 1;
 }
+
 /* ========================INVENTORY LIST======================== */
 
 .inventory-header {
@@ -352,25 +406,153 @@ body {
     color: white;
 }
 
-/* ========================COMMENT CONTAINER======================== */
-.comment-container {
-    position: relative;
+/* ========================MEDIA QUERIES======================== */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+    .flex-container {
+        flex-direction: column;
+    }
+    .viewer-text,
+    .viewer-header {
+        font-size: 30px;
+    }
+    .cabinet-container {
+        margin: auto;
+    }
+    .table-container {
+        margin-top: 50px;
+        width: 90%;
+    }
+
+    .inventory-cabinet {
+        margin-top: 50px;
+    }
+    .signup-container {
+        margin-top: 50px;
+    }
+    .modal-button {
+        margin: 0px 5px 5px 0px;
+        font-size: 13px;
+    }
+    #deleteItemButton {
+        margin-right: 45px;
+    }
+    .greeting {
+        margin: 0;
+        padding: 5px;
+        font-size: 26px;
+    }
+    .inventory-container {
+        width: 100%;
+        height: 100%;
+    }
+    #jumbo-header {
+        display: none;
+    }
+    #nav-background {
+        background-color: transparent;
+        box-shadow: none;
+        width: 100% !important;
+        margin-left: 5% !important;
+        margin-right: 5% !important;
+    }
+    .nav-link,
+    .navbar-collapse {
+        font-size: 20px;
+        display: contents !important;
+    }
+    .add-inventory-container {
+        width: 75%;
+    }
 }
 
+@media (min-width: 576px) and (max-width: 767px) {
+    .flex-container {
+        flex-direction: column;
+    }
+    .cabinet-container {
+        margin: auto;
+    }
+    .table-container {
+        margin-top: 50px;
+    }
+
+    .inventory-cabinet {
+        margin-top: 50px;
+    }
+    .signup-container {
+        margin-top: 50px;
+    }
+    .modal-button {
+        margin: 0px 5px 5px 0px;
+        font-size: 13px;
+    }
+    .greeting {
+        margin: 0;
+        padding: 5px;
+        font-size: 20px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .flex-container {
+        flex-direction: column;
+    }
+    .cabinet-container {
+        margin: auto;
+    }
+    .table-container {
+        margin-top: 50px;
+    }
+
+    .inventory-cabinet {
+        margin-top: 50px;
+    }
+    .signup-container {
+        margin-top: 50px;
+    }
+    .modal-button {
+        margin: 0px 5px 5px 0px;
+    }
+    .greeting {
+        margin: 0;
+        padding: 5px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    /* .inventory-container {
+        display: none;
+    } */
+
+    .flex-container {
+        flex-wrap: wrap;
+        float: left;
+    }
+}
+
+/* ========================COMMENT CONTAINER======================== */
+/* .comment-container {
+    position: relative;
+} */
+
 /* ========================CHEERS CONTAINER======================== */
-.cheers-container {
+/* .cheers-container {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     padding: 50px;
     border-radius: 25px;
     width: 50%;
     text-align: center;
-}
+} */
 
 /* ========================Image Uploader======================== */
-#display_image {
+/* #display_image {
     width: 100px;
     height: 100px;
     border: 1px sold black;
     background-position: center;
     background-size: cover;
-}
+} */
