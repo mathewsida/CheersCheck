@@ -1,14 +1,16 @@
-const image_input = document.querySelector("#image_output");
+// FUTURE DEV
 
-var uploaded_image = "";
+// const image_input = document.querySelector("#image_output");
 
-image_input.addEventListener("change" , function()
-{
-    const reader = FileReader();
-    reader.addEventListener("load" , () =>{
-        uploaded_image = reader.result;
-        document.querySelector("#display_image").getElementsByClassName.backgroundImage = `url(${uploaded_image})`;
+// var uploaded_image = "";
 
-    })
-    reader.readAsDataURL(this.files[0]);
-})
+// image_input.addEventListener("change" , function()
+// {
+//     const reader = FileReader();
+//     reader.addEventListener("load" , () =>{
+//         uploaded_image = reader.result;
+//         document.querySelector("#display_image").getElementsByClassName.backgroundImage = `url(${uploaded_image})`;
+
+//     })
+//     reader.readAsDataURL(this.files[0]);
+// })
