@@ -54,7 +54,7 @@ SO THAT I can  I can share with friends and other users who might have similar t
 ###  Links 🔗
 
 - Github URL: [https://github.com/mathewsida/CheersCheck](https://github.com/mathewsida/CheersCheck)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Add live site URL here](https://quiet-hollows-97933.herokuapp.com/)
 
 <br>
 <hr>
